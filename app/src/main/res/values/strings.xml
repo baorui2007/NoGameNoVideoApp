@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">自律打卡</string>
+    <string name="question_title">今天的确认</string>
+    <string name="question_message">今天你做到了没打游戏、没刷短视频吗？</string>
+    <string name="btn_yes">是的，做到了</string>
+    <string name="btn_no">没有，破戒了</string>
+    <string name="current_streak">已连续坚持 %d 天</string>
+    <string name="best_streak">最长记录：%d 天</string>
+    <string name="streak_zero">今天还没有确认，晚上9点记得回来打卡哦</string>
+    <string name="notif_channel_name">每日提醒</string>
+    <string name="notif_channel_desc">每天晚9点的自律确认提醒</string>
+    <string name="notif_title">自律打卡提醒</string>
+    <string name="notif_body">今天有没有打游戏或刷视频？点进来确认吧！</string>
+    <string name="notification_streak">连续坚持 %d 天 🔥</string>
+</resources>
