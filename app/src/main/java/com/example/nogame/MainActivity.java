@@ -1,16 +1,13 @@
 package com.example.nogame;
 
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private StreakManager streakManager;
     private TextView tvStreak;
@@ -23,11 +20,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         streakManager = new StreakManager(this);
-
-        // 检查新的一天并重置确认状态
         streakManager.checkNewDay();
 
-        // 初始化 UI
         tvStreak = findViewById(R.id.tv_streak);
         tvBestStreak = findViewById(R.id.tv_best_streak);
         tvStatus = findViewById(R.id.tv_status);
@@ -38,9 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
         btnYes.setOnClickListener(v -> onConfirmYes());
         btnNo.setOnClickListener(v -> onConfirmNo());
+    }
 
-        // 如果今天还没确认，弹出确认对话框
-        if (!streakManager.isTodayConfirmed()) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!isFinishing() && !streakManager.isTodayConfirmed()) {
             showConfirmDialog();
         }
     }
@@ -52,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
         }
         int newStreak = streakManager.confirmYes();
         updateDisplay();
-
-        String msg = "太棒了！已连续坚持 " + newStreak + " 天";
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "太棒了！已连续坚持 " + newStreak + " 天", Toast.LENGTH_LONG).show();
     }
 
     private void onConfirmNo() {
@@ -64,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         }
         streakManager.confirmNo();
         updateDisplay();
-        Toast.makeText(this, "没关系，明天重新开始！加油 💪", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "没关系，明天重新开始！加油", Toast.LENGTH_LONG).show();
     }
 
     private void updateDisplay() {
@@ -81,17 +76,15 @@ public class MainActivity extends AppCompatActivity {
         tvBestStreak.setText(getString(R.string.best_streak, best));
 
         if (confirmed) {
-            if (current > 0) {
-                tvStatus.setText("今天已完成确认 ✅");
-            } else {
-                tvStatus.setText("今天已破戒，明天重新开始吧");
-            }
+            tvStatus.setText(current > 0 ? "今天已完成确认" : "今天已破戒，明天重新开始吧");
         } else {
             tvStatus.setText("等待今晚9点打卡确认...");
         }
     }
 
     private void showConfirmDialog() {
+        if (isFinishing()) return;
+
         new AlertDialog.Builder(this)
                 .setTitle(R.string.question_title)
                 .setMessage(R.string.question_message)
@@ -99,13 +92,12 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton(R.string.btn_yes, (dialog, which) -> {
                     int newStreak = streakManager.confirmYes();
                     updateDisplay();
-                    String msg = "太棒了！已连续坚持 " + newStreak + " 天";
-                    Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "太棒了！已连续坚持 " + newStreak + " 天", Toast.LENGTH_LONG).show();
                 })
                 .setNegativeButton(R.string.btn_no, (dialog, which) -> {
                     streakManager.confirmNo();
                     updateDisplay();
-                    Toast.makeText(this, "没关系，明天重新开始！加油 💪", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "没关系，明天重新开始！加油", Toast.LENGTH_LONG).show();
                 })
                 .show();
     }

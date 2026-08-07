@@ -13,17 +13,18 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
         createNotificationChannel();
-        // 设置每晚9点提醒
+        // 设备重启或应用更新后重新设置闹钟
         ReminderReceiver.setReminderAlarm(this);
     }
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            String name = getString(R.string.notif_channel_name);
-            String desc = getString(R.string.notif_channel_desc);
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-            channel.setDescription(desc);
+            NotificationChannel channel = new NotificationChannel(
+                    CHANNEL_ID,
+                    "每日提醒",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            channel.setDescription("每天晚9点的自律确认提醒");
 
             NotificationManager nm = getSystemService(NotificationManager.class);
             if (nm != null) {

@@ -4,16 +4,12 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- 一个简约的勾号图标 -->
+    <!-- 简约勾号 -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M54,30 L54,78 M30,54 L78,54"
+        android:pathData="M34,58 L48,72 L76,40"
         android:strokeWidth="8"
-        android:strokeColor="#FFFFFF" />
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M38,54 L50,66 L70,44"
-        android:strokeWidth="6"
         android:strokeColor="#FFFFFF"
-        android:fillAlpha="0" />
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
 </vector>
