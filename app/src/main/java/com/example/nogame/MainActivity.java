@@ -3,7 +3,6 @@ package com.example.nogame;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +24,8 @@ public class MainActivity extends Activity {
         tvStreak = findViewById(R.id.tv_streak);
         tvBestStreak = findViewById(R.id.tv_best_streak);
         tvStatus = findViewById(R.id.tv_status);
-        Button btnYes = findViewById(R.id.btn_yes);
-        Button btnNo = findViewById(R.id.btn_no);
+        TextView btnYes = findViewById(R.id.btn_yes);
+        TextView btnNo = findViewById(R.id.btn_no);
 
         updateDisplay();
 

@@ -4,18 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="32dp"
-    android:background="#FFF8F8F8">
+    android:padding="32dp">
 
-    <!-- 顶部标题 -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="自律打卡"
         android:textSize="28sp"
-        android:textColor="@color/purple_700"
+        android:textColor="#FF3700B3"
         android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="4dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,18 +23,16 @@
         android:textColor="#FF888888"
         android:layout_marginBottom="48dp" />
 
-    <!-- 当前连续天数 -->
     <TextView
         android:id="@+id/tv_streak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="加载中..."
         android:textSize="36sp"
-        android:textColor="@color/streak_green"
+        android:textColor="#FF4CAF50"
         android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
-    <!-- 最佳记录 -->
     <TextView
         android:id="@+id/tv_best_streak"
         android:layout_width="wrap_content"
@@ -46,36 +42,34 @@
         android:textColor="#FF888888"
         android:layout_marginBottom="36dp" />
 
-    <!-- 状态提示 -->
     <TextView
         android:id="@+id/tv_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
         android:textSize="14sp"
-        android:textColor="@color/teal_700"
+        android:textColor="#FF018786"
         android:layout_marginBottom="48dp" />
 
-    <!-- 按钮区域 -->
-    <Button
+    <TextView
         android:id="@+id/btn_yes"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:gravity="center"
         android:text="@string/btn_yes"
         android:textSize="16sp"
-        android:textColor="@color/white"
-        android:background="@color/streak_green"
-        android:stateListAnimator="@null"
+        android:textColor="@android:color/white"
+        android:background="@drawable/btn_green_bg"
         android:layout_marginBottom="16dp" />
 
-    <Button
+    <TextView
         android:id="@+id/btn_no"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:gravity="center"
         android:text="@string/btn_no"
         android:textSize="16sp"
-        android:textColor="@color/white"
-        android:background="@color/streak_red"
-        android:stateListAnimator="@null" />
+        android:textColor="@android:color/white"
+        android:background="@drawable/btn_red_bg" />
 
 </LinearLayout>
